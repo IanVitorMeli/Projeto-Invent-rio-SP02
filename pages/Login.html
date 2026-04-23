@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | HUB Inventário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-box">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>HUB</span>
+            </div>
+
+            <div class="welcome-text">
+                <h2>Olá! 👋</h2>
+                <p>Acesse o sistema de inventário interno</p>
+            </div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" class="login-input" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" class="login-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-login" id="login-btn">Entrar no Sistema</button>
+
+                <p id="login-message" class="login-message"></p>
+            </form>
+
+            <div class="footer-links">
+                <p><a href="#">Esqueceu a senha?</a></p>
+                <p style="margin-top: 10px; color: var(--text-gray);">Não tem acesso? <a href="Register.html">Solicitar ao TI</a></p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;" class="copyright">
+            <p>© 2026 Gabriel Felix | TI Infrastructure</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="../scripts/supabase-config.js"></script>
+    <script src="../scripts/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB Internal System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body data-theme="light">
+    <aside>
+        <div class="logo-container">
+            <div class="brand-name"><i class="fa-solid fa-boxes-stacked"></i> HUB Internal System</div>
+        </div>
+
+        <a href="#" class="user-profile">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQF-BMrXXDoL0g/profile-displayphoto-scale_400_400/B4DZugi2GIKoAg-/0/1767925049441?e=1776297600&v=beta&t=1Nc07L3qGOOyTpzrR_UtkJCECfpFJrBz2gxT3zSp1ss" class="user-photo">
+            <div>
+                <p style="font-weight: 800; font-size: 15px;">Gabriel Felix</p>
+                <p style="font-size: 11px; color: var(--text-gray);">IT Administrator</p>
+            </div>
+        </a>
+        
+        <nav>
+            <div class="menu-item active" data-category="todos"><i class="fa-solid fa-layer-group"></i> Geral</div>
+            <div class="menu-item" data-category="logística"><i class="fa-solid fa-truck-fast"></i> Logística Zebra</div>
+            <div class="menu-item" data-category="infra"><i class="fa-solid fa-laptop"></i> Hardware e Infra</div>
+            <div class="menu-item" data-category="periféricos"><i class="fa-solid fa-keyboard"></i> Periféricos</div>
+            <div class="menu-item" data-category="monitores"><i class="fa-solid fa-display"></i> Monitores</div>
+        </nav>
+
+        <div class="filter-section">
+            <p class="filter-title">Disponibilidade</p>
+            <label class="filter-label"><input type="checkbox" class="status-filter" value="estoque" checked> Operacional</label>
+            <label class="filter-label"><input type="checkbox" class="status-filter" value="saída" checked> Com Defeito</label>
+        </div>
+
+        <div class="filter-section" id="triagem-section">
+            <p class="filter-title">Triagem de Erros</p>
+            <label class="filter-label" data-for="infra logística"><input type="checkbox" class="tag-filter" value="bateria" checked> Baterias</label>
+            <label class="filter-label" data-for="logística monitores"><input type="checkbox" class="tag-filter" value="touch" checked> Touch/Display</label>
+            <label class="filter-label" data-for="infra periféricos logística monitores"><input type="checkbox" class="tag-filter" value="queimado" checked> Queimados</label>
+            <label class="filter-label" data-for="infra periféricos monitores"><input type="checkbox" class="tag-filter" value="quebrado" checked> Quebrado</label>
+            <label class="filter-label" data-for="logística"><input type="checkbox" class="tag-filter" value="brick" checked> Erro de Firmware</label>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" class="search-bar" placeholder="Pesquisar ativos...">
+            </div>
+            <button class="theme-toggle-top" id="theme-btn">MUDAR TEMA</button>
+        </header>
+
+        <div class="content" id="inventory-grid"></div>
+    </main>
+
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal-card">
+            <h2 class="modal-title">Editar Ativo</h2>
+            <input type="hidden" id="edit-index">
+            
+            <div class="input-group">
+                <label>Nome do Produto</label>
+                <input type="text" id="edit-name" class="modal-input">
+            </div>
+
+            <div class="input-group">
+                <label>Código Patrimônio (Bloqueado)</label>
+                <input type="text" id="edit-code" class="modal-input" disabled>
+            </div>
+
+            <div class="input-group">
+                <label>Categoria</label>
+                <select id="edit-category" class="modal-input">
+                    <option value="logística">Logística Zebra</option>
+                    <option value="infra">Hardware e Infra</option>
+                    <option value="periféricos">Periféricos</option>
+                    <option value="monitores">Monitores</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Status</label>
+                <select id="edit-status" class="modal-input">
+                    <option value="estoque">Operacional</option>
+                    <option value="saída">Com Defeito</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Tag de Triagem</label>
+                <select id="edit-tag" class="modal-input">
+                    <option value="ok">Nenhuma / Operacional</option>
+                    <option value="bateria">Bateria</option>
+                    <option value="touch">Touch/Display</option>
+                    <option value="queimado">Queimado</option>
+                    <option value="quebrado">Quebrado</option>
+                    <option value="brick">Erro de Firmware</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-modal btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn-modal btn-save" onclick="saveChanges()">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="../scripts/supabase-config.js"></script>
+<script src="../scripts/main.js"></script>
+</body>
+</html>
