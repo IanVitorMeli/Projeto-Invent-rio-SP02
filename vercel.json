@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "^/login$",
+      "dest": "/pages/login.html"
+    },
+    {
+      "src": "^/dashboard$",
+      "dest": "/pages/dashboard.html"
+    }
+  ]
+}
